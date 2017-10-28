@@ -1,5 +1,3 @@
-package Model;
-
 /**
  *
  * @author Thilina Dharmasena
@@ -27,15 +25,19 @@ public class nic {
     }
     
     public static void main(String[] args) {
+        // Pass the id no id class and get return as array 
       nic nic   = model_DOB_getInstance("938463469v");
       String []data =nic.process_birthday();
+        // data[0] Birth day 
         System.out.println("Birth Day "+data[0]);
+        // data[1] gender 
         System.out.println("Gender "+data[1]);
     }
     
     
     public String[] process_birthday() {
         try {
+            // Check wether nic no 
               if (NIC.length() == 10 & (NIC.endsWith("v") | NIC.endsWith("V") | NIC.endsWith("x") | NIC.endsWith("X"))) {
 
             int year = Integer.parseInt(NIC.substring(0, 2));
@@ -47,16 +49,13 @@ public class nic {
 
             String sex = "";
 
-
+// Extract gender 
             if (date < 500) {
                 sex = "Male";
             } else {
                 sex = "Female";
                 date = date - 500;
             }
-
-
-
 
             if (date <= totalDays(1)) {
                 m = 01;
@@ -106,6 +105,8 @@ public class nic {
 //            System.out.println();
 //            System.out.println("********************************************************");
             //value[0] = "19" +year + "/" + m + "/" + d;
+                  // Create the date format 
+                  
             value[0] = d+ "/" + m + "/" +"19" +year  ;
             value[1] = sex;
 
